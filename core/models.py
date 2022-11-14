@@ -69,3 +69,19 @@ class FriendRequest(models.Model):
     def __str__(self):
         return str(self.askFrom) + '----->' + str(self.askTo)
 
+
+class Message(models.Model):
+    message = models.CharField(max_length=140)
+    sender = models.ForeignKey(
+        settings.AUTH_USER_MODEL, related_name='sender',
+        on_delete=models.CASCADE
+    )
+    receiver = models.ForeignKey(
+        settings.AUTH_USER_MODEL, related_name='receiver',
+        on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return str(self.sender)
+
+
