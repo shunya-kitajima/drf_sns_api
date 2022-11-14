@@ -16,7 +16,7 @@ class UserAdmin(BaseUserAdmin):
                 'fields': (
                     'is_active',
                     'is_staff',
-                    'is_supper'
+                    'is_superuser'
                 )
             }
         ),
