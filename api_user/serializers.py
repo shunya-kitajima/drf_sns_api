@@ -25,5 +25,8 @@ class ProfileSerializer(serializers.ModelSerializer):
         extra_kwargs = {'userPro': {'read_only': True}}
 
 
-
-
+class FriendRequestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FriendRequest
+        fields = ('id', 'askFrom', 'askTo', 'approved')
+        extra_kwargs = {'askFrom': {'read_only': True}}
