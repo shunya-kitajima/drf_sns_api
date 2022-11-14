@@ -15,3 +15,15 @@ class UserSerializer(serializers.ModelSerializer):
         Token.objects.create(user=user)
         return user
 
+
+class ProfileSerializer(serializers.ModelSerializer):
+    created_at = serializers.DateTimeField(format='%Y-%m-%d', read_only=True)
+
+    class Meta:
+        model = Profile
+        fields = ('id', 'nickName', 'userPro', 'created_at', 'img')
+        extra_kwargs = {'userPro': {'read_only': True}}
+
+
+
+
