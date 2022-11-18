@@ -52,4 +52,4 @@ class MyProfileListView(generics.ListAPIView):
     permission_classes = (permissions.IsAuthenticated,)
 
     def get_queryset(self):
-        return self.queryset.filter(Q(userPro=self.request.user))
+        return self.queryset.filter(userPro=self.request.user)
