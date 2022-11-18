@@ -12,7 +12,7 @@ class CreateUserView(generics.CreateAPIView):
 
 
 class FriendRequestViewSet(viewsets.ModelViewSet):
-    queryset = FriendRequest.object.all()
+    queryset = FriendRequest.objects.all()
     serializer_class = serializers.FriendRequestSerializer
     authentication_classes = (authentication.TokenAuthentication,)
     permission_classes = (permissions.IsAuthenticated,)
@@ -36,7 +36,7 @@ class FriendRequestViewSet(viewsets.ModelViewSet):
 
 
 class ProfileViewSet(viewsets.ModelViewSet):
-    queryset = Profile.object.all()
+    queryset = Profile.objects.all()
     serializer_class = serializers.ProfileSerializer
     authentication_classes = (authentication.TokenAuthentication,)
     permission_classes = (permissions.IsAuthenticated, ProfilePermission)
