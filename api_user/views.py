@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.db.models import Q
 from rest_framework import generics, authentication, permissions, viewsets, status
 from rest_framework.response import Response
@@ -43,7 +42,14 @@ class ProfileViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated, ProfilePermission)
 
     def perform_create(self, serializer):
-        serializer.save(userPro=self.user)
+        serializer.save(userPro=self.request.user)
 
 
-class MyProfileListView()
+class MyProfileListView(generics.ListAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = serializers.ProfileSerializer
+    authentication_classes = (authentication.TokenAuthentication,)
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get_queryset(self):
+        return self.queryset.filter(Q(userPro=self.request.user))
