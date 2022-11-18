@@ -5,8 +5,8 @@ from api_user import views
 app_name = 'user'
 
 router = DefaultRouter()
-router.register('profile', views.ProfileViewSet)
 router.register('approval', views.FriendRequestViewSet)
+router.register('profile', views.ProfileViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
