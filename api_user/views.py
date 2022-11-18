@@ -27,11 +27,11 @@ class FriendRequestViewSet(viewsets.ModelViewSet):
             raise ValidationError('User can have only unique request')
 
     def destroy(self, request, *args, **kwargs):
-        response = {'message': 'Delete FriendRequest is not allowed!'}
+        response = {'message': 'Delete FriendRequest is not arrowed!'}
         return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
     def partial_update(self, request, *args, **kwargs):
-        response = {'message': 'Patch FriendRequest is not allowed!'}
+        response = {'message': 'Patch FriendRequest is not arrowed!'}
         return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
 
