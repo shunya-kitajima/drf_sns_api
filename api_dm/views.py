@@ -11,7 +11,7 @@ class MessageViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
 
     def get_queryset(self):
-        return self.queryset.filter(askFrom=self.request.user)
+        return self.queryset.filter(sender=self.request.user)
 
     def perform_create(self, serializer):
         serializer.save(sender=self.request.user)
