@@ -7,4 +7,7 @@ from api_user import serializers
 from core.models import Profile, FriendRequest
 
 
+class CreateUserView(generics.CreateAPIView):
+    serializer_class = serializers.UserSerializer
+
 
