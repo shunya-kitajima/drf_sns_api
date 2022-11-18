@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.exceptions import ValidationError
 from api_user import serializers
 from core.models import Profile, FriendRequest
+from core.custompermissions import ProfilePermission
 
 
 class CreateUserView(generics.CreateAPIView):
@@ -35,3 +36,14 @@ class FriendRequestViewSet(viewsets.ModelViewSet):
         return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
 
+class ProfileViewSet(viewsets.ModelViewSet):
+    queryset = Profile.object.all()
+    serializer_class = serializers.ProfileSerializer
+    authentication_classes = (authentication.TokenAuthentication,)
+    permission_classes = (permissions.IsAuthenticated, ProfilePermission)
+
+    def perform_create(self, serializer):
+        serializer.save(userPro=self.user)
+
+
+class MyProfileListView()
