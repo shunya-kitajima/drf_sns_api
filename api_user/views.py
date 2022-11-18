@@ -33,3 +33,5 @@ class FriendRequestViewSet(viewsets.ModelViewSet):
     def partial_update(self, request, *args, **kwargs):
         response = {'message': 'Patch is not allowed!'}
         return Response(response, status=status.HTTP_400_BAD_REQUEST)
+
+
